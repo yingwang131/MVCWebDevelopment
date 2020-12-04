@@ -8,7 +8,7 @@
 
 
 ## Logic Layer
-![image](https://github.com/yingwang131/Event-Recommendation/blob/master/DemoPic/logic.png)
+![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/FinalProjectApplication/DemoPic/logic.png)
 ## RPC
 ![image](https://github.com/yingwang131/Event-Recommendation/blob/master/DemoPic/rpc.png)
 ## Database
