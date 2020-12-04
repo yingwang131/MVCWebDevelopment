@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/MileStone1.css">
+
+</head>
+<body style="height:800px;width:100%;">
+
+<%- include ('partials/navigation') %>
+
+<%- include ('partials/header') %>
+
+
+<div style="height: 50%">
+    <main>
+
+
+        <h2 class="event-name"><%= qs.connectionName %></h2>
+        <ul id="event-list">
+            <li class="event">
+                <img alt="event image" src="images/rose.jpg"/>
+                <div class="host-details">
+                    <p class="event-host">Host by Gabriela Martinez</p>
+<!--                    <p class="event-address">Knight Theater<br/>430 S Tryon St<br/> NC</p>-->
+                    <p class="event-address"> <%= qs.address%></p>
+                    <p class="event-time"> <%= qs.dateTime %></p>
+                </div>
+                <div class="event-btn">
+                    <p>Are you going? 54 people going</p>
+                    <button class="yes-btn" onclick="window.location.href='savedConnections'">Yes</button>
+                    <button class="no-btn" onclick="window.location.href='savedConnections'">No</button>
+                    <button class="mb-btn" onclick="window.location.href='savedConnections'">Maybe</button>
+                </div>
+
+            </li>
+        </ul>
+        <p class="details">Details:</p>
+        <P class="event-detail">
+            <%= qs.details %>
+    </main>
+</div>
+
+<%- include ('partials/footer') %>
+</body>
+</html>

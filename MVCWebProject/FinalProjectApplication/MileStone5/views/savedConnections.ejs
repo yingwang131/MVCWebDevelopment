@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/MileStone1.css">
+    <script type="text/javascript" src="/jquery/dist/jquery.js"></script>
+
+</head>
+<body style="height:800px;width:100%;">
+
+<div style="height: 12%;">
+    <header class="top-header">
+        <div style="float: left;width: 70%;">
+            <a href="index">
+                <img class="img1" src="/images/charlotte.jpg" alt="Event Recommendation">
+            </a>
+        </div>
+        <div style="float: right;">
+            <nav class="top-nav">
+                <a href="/newConnection">New Connection</a>
+                <a href="/userController/savedConnections">My Connection</a>
+                <a href="/logout">Sign out</a>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<%- include ('partials/header') %>
+
+
+<div style="height: 50%">
+    <main>
+
+        <table style="width: 90%" class="connection-table">
+            <caption class="con-head">Norm's events</caption>
+            <thead>
+            <th>Connection</th>
+            <th>Category</th>
+            <th>Going</th>
+            <th colspan="2"></th>
+            </thead>
+
+            <tbody>
+            <% for(var i = 0;i < data.length;i++){ %>
+
+                <tr>
+                    <th><%= data[i].connectionName %></th>
+                    <th><%= data[i].connectionTopic %></th>
+                    <th><%= data[i].rsvpStatus %></th>
+                    <th>
+                        <button onclick="update('<%= data[i].connectionID %>')"> Update</button>
+
+                    </th>
+                    <th>
+                        <button onclick="removeConnection('<%= data[i].userConnectionID %>')"> Delete
+                        </button>
+                    </th>
+
+                </tr>
+
+            <% } %>
+            </tbody>
+
+        </table>
+    </main>
+</div>
+
+<%- include ('partials/footer') %>
+
+<script type="text/javascript">
+    function removeConnection(userConnectionID) {
+        //前端的userConnectIds 传给router
+        // var userConnectionID = $("#userConnectionID").val();
+        var data = 'userConnectionID=' + userConnectionID;
+        $.ajax({
+            url: '/userController/deleteUserConnection',
+            type: "get",
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                if (200 == data.status) {
+                    window.location.href = '/userController/savedConnections';
+                } else {
+                    alert('delete connection to user failure');
+                }
+
+            }
+        })
+    }
+
+    function update(connectionID) {
+        window.location.href = "/connection?connectionID=" + connectionID;
+    }
+</script>
+
+</body>
+</html>

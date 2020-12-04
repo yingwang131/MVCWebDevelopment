@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Connections</title>
+
+</head>
+
+
+<body>
+    <% include ./common/header.ejs %>
+    <div class="container">
+
+        <%
+    if (data.status !== null && data.status != undefined ){
+        let msg = data.status == 400 ? "You made a request to an invalid connection": "Invalid request";
+    %>
+        <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+            <strong><%= msg %></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <% }
+    %>
+        <!--       content goes here -->
+        <div class="row h-100">
+            <div class="col-12 my-auto">
+                <div class="jumbotron bg-white">
+                    <% for(let i=0; i<data.topics.length; i++){ %>
+                    <h3> <%= data.topics[i] %></h3>
+                    <ul class="list-group list-group-flush ml-3">
+                        <% for(let j=0; j < data.connections.length; j++){
+                            if(data.connections[j]._connectionTopic === data.topics[i] ){%>
+                        <li class="list-group-item border-0"><a
+                                href="/cciconnect/connection/<%= data.connections[j]._connectionId%>"><%= data.connections[j]._connectionName %></a>
+                        </li>
+                        <% } %>
+
+                        <% }%>
+                    </ul>
+                    <% } %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <% include ./common/footer.ejs %>
+
+</body>
+
+</html>

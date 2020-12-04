@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/MileStone1.css">
+
+</head>
+<body style="height:800px;width:100%;">
+
+<div style="height: 12%;">
+    <header class="top-header">
+        <div style="float: left;width: 70%;">
+            <a href="index">
+                <img class="img1" src="/images/charlotte.jpg" alt="Event Recommendation">
+            </a>
+        </div>
+        <div style="float: right;">
+            <nav class="top-nav">
+                <a href="/newConnection">New Connection</a>
+                <a href="/userController/savedConnections">My Connection</a>
+                <a href="/logout">Sign out</a>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<%- include ('partials/header') %>
+
+<div style="height: 50%">
+    <main>
+        <% for (var i = 0;i < qs.length;i++){ %>
+            <h3 class="event1"><%= qs[i].topic %></h3>
+            <ul>
+                <% var listData = qs[i].data %>
+                <% for (var j = 0;j < listData.length;j++){ %>
+                    <li>
+                        <a href="connection?connectionID=<%= listData[j].connectionID %>"> <%= listData[j].connectionName %></a>
+                    </li>
+                <% } %>
+            </ul>
+
+        <% } %>
+    </main>
+</div>
+
+<%- include ('partials/footer') %>
+</body>
+</html>
+

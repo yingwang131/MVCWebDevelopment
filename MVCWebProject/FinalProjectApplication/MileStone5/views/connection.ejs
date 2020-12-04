@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/MileStone1.css">
+
+    <script type="text/javascript" src="jquery/dist/jquery.js"></script>
+
+</head>
+<body style="height:800px;width:100%;">
+
+<div style="height: 12%;">
+    <header class="top-header">
+        <div style="float: left;width: 70%;">
+            <a href="index">
+                <img class="img1" src="/images/charlotte.jpg" alt="Event Recommendation">
+            </a>
+        </div>
+        <div style="float: right;">
+            <nav class="top-nav">
+                <a href="/newConnection">New Connection</a>
+                <a href="/userController/savedConnections">My Connection</a>
+                <a href="/logout">Sign out</a>
+            </nav>
+        </div>
+    </header>
+</div>
+<%- include ('partials/header') %>
+<div style="height: 50%">
+    <main>
+
+
+        <h2 class="event-name"><%= qs.connectionName %></h2>
+        <ul id="event-list">
+            <li class="event">
+                <img alt="event image" src="images/rose.jpg"/>
+                <div class="host-details">
+<!--                    <p class="event-host">Host by Gabriela Martinez</p>-->
+                    <!--                    <p class="event-address">Knight Theater<br/>430 S Tryon St<br/> NC</p>-->
+                    <p class="event-address"> <%= qs.address %></p>
+                    <p class="event-time"> <%= qs.dateTime %></p>
+                </div>
+                <div class="event-btn">
+                    <p>Are you going? 54 people going</p>
+
+                    <input hidden="hidden" id="connectionID" value="<%= qs.connectionID %>"/>
+
+                    <button id="yes-btn" class="yes-btn" onclick="addConnection('Yes')">Yes
+                    </button>
+
+
+                    <button id="no-btn" class="no-btn" onclick="addConnection('No')">No</button>
+                    <button id="maybe-btn" class="mb-btn" onclick="addConnection('Maybe')">Maybe
+                    </button>
+                </div>
+
+            </li>
+        </ul>
+        <p class="details">Details:</p>
+        <P class="event-detail">
+            <%= qs.details %>
+    </main>
+</div>
+
+<%- include ('partials/footer') %>
+<script type="text/javascript">
+    function addConnection(rsvpStatus) {
+        //前端的3个参数，传给router，
+        // window.location.href='userController/addUserConnection?email='+email+'connectionID='+connectionID+'rsvpStatus='+rsvpStatus;
+        var connectionID = $('#connectionID').val();
+        var data = 'connectionID=' + connectionID + '&rsvpStatus=' + rsvpStatus;
+        $.ajax({
+            url: '/userController/addUserConnection',
+            type: "post",
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                if (200 == data.status) {
+                    window.location.href = '/userController/savedConnections';
+                } else if (4001 == data.status) {
+                    window.location.href = '/login';
+                } else {
+                    alert('add connection to user failure');
+                }
+
+            }
+        })
+
+    }
+</script>
+</body>
+</html>

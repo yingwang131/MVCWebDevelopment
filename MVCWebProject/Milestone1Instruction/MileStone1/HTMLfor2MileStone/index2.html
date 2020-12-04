@@ -1,0 +1,109 @@
+<html>
+<style>
+    table, table tr th, table tr td {
+        border: 1px solid #0094ff;
+    }
+
+    table {
+        width: 200px;
+        min-height: 25px;
+        line-height: 25px;
+        text-align: center;
+        border-collapse: collapse;
+        padding: 2px;
+    }
+</style>
+<body>
+<div id="container">
+    <!--<table id="container">-->
+    <!--<tr>-->
+    <!--<th>connection-->
+    <!--<th>-->
+    <!--<th>-->
+    <!--category-->
+    <!--</th>-->
+    <!--<th>going</th>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><a href="./scatter_plot.html">scatter plot</a></td>-->
+    <!--<td>study</td>-->
+    <!--<td>yes</td>-->
+    <!--<td>-->
+    <!--<button>update</button>-->
+    <!--<button>delete</button>-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><a href="./heat_map.html">heatmap plot</a></td>-->
+    <!--<td>study</td>-->
+    <!--<td>yes</td>-->
+    <!--<td>-->
+    <!--<button>update</button>-->
+    <!--<button>delete</button>-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--<tr>-->
+    <!--<td><a href="./parallel_coordinates.html">parallel coordinate plot</a></td>-->
+    <!--<td>sports</td>-->
+    <!--<td>yes</td>-->
+    <!--<td>-->
+    <!--<button>update</button>-->
+    <!--<button>delete</button>-->
+    <!--</td>-->
+    <!--</tr>-->
+    <!--</table>-->
+</div>
+</body>
+<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.js"></script>
+<script>
+    var items = new Array();
+    items.push({"id": 1, "connection": "1001", "category": "study", "going": "yes"});
+    items.push({"id": 2, "connection": "1002", "category": "study", "going": "yes"});
+    items.push({"id": 3, "connection": "1003", "category": "study", "going": "yes"});
+
+    function generate() {
+
+        var table = document.createElement("table");
+        var tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+        var caption = table.createCaption();
+        caption.innerHTML = "Norm's Connection";
+        var tr = tbody.insertRow(0);
+        var str = "Connection, category, Going, ".split(",");
+        for (var i = 0; i < str.length; i++) {
+            var th = document.createElement("th");
+            th.innerHTML = str[i];
+            tr.appendChild(th);
+        }
+        //遍历每一行数据
+        for (var i = 0; i < items.length; i++) {
+            var tr = tbody.insertRow(tbody.rows.length);
+            var obj = items[i];
+            //遍历每个列
+            for (var p in obj) {
+                if (p == 'id') {
+                    continue;
+                }
+                var op = obj[p];
+                var td = tr.insertCell(tr.cells.length);
+                td.innerHTML = op;
+            }
+
+            var td = tr.insertCell(tr.cells.length);
+            td.innerHTML = "<button onclick='call_update()'>Update </button> <button onclick='call_delete()'>Delete </button>";
+        }
+        $("#container").append(table);
+    }
+
+    $(generate());
+
+    function call_update() {
+        alert("update");
+    }
+
+    function call_delete() {
+        alert("delete");
+    }
+</script>
+</html>
+

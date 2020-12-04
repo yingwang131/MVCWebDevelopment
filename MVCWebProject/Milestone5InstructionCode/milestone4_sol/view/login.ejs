@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign In</title>
+</head>
+
+<body>
+<% include ./common/header.ejs %>
+<div class="container">
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <h2>Welcome to CCI Connections Site</h2>
+            <p>please enter your username and password to signin </p>
+            <p id="error" style="display: none"></p>
+            <form id="contact-form">
+                <!--                method="post" action="/cciconnect/myconnections/login-->
+                <table id="login">
+                    <tr>
+                        <td>
+                            <label>Username</label>
+                        </td>
+                        <td>
+                            <input type="text" id="email" name="email">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>Password</label>
+                        </td>
+                        <td>
+                            <input type="password" id="password" name="password">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" class="btn btn-primary-bordered fr" onclick="login()"> Login</button>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </form>
+        </div>
+    </div>
+
+
+</div>
+
+<% include ./common/footer.ejs %>
+<script type="text/javascript">
+    // 1.监听submit button的click事件，onClick绑定函数来实现
+
+    function login() {
+        //2.获取表单各个字段的值
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var data = 'email=' + email + '&password=' + password;
+        //3. 发起ajax请求，调用接口/validate, 提交表单数据，调用方式为post
+        $.ajax({
+            url: '/cciconnect/myconnections/login',
+            type: "post",
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                if (200 == data.status) {
+                    window.location.href = '/cciconnect/myconnections/login?email=' + email;
+                } else if (4001 == data.status) {
+                    // alert(data.msg)
+                    $('#error').text(data.msg);
+                    $('#error').show();
+                }
+            }
+        })
+    }
+
+</script>
+</body>
+
+</html>

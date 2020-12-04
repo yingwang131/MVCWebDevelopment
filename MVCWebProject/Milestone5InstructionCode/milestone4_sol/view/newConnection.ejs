@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>New Connection</title>
+    <link rel="stylesheet" href="/stylesheets/datepicker.css"/>
+</head>
+
+<body>
+
+<% include ./common/header.ejs %>
+<div class="container">
+
+    <!--       content goes here -->
+    <div class="row mt-5">
+        <div class="col-sm-8 offset-2">
+            <div id="error" style="display: none;">
+                <p id="error_p"></p>
+            </div>
+            <form name="newConnectionForm" class="mt-3" id="newConnectionForm">
+                <!--                    method="post" action="/cciconnect/addconnection/new"-->
+
+                <div class="form-group row pb-2">
+                    <label for="topic" class="col-sm-2 col-form-label">Topic</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="topic" name="topic" placeholder="topic">
+                    </div>
+                </div>
+                <div class="form-group row pb-2">
+                    <label for="name" class="col-sm-2 col-form-label">Title</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="title" name="title" placeholder="title">
+                    </div>
+                </div>
+                <div class="form-group row pb-2">
+                    <label for="detail" class="col-sm-2 col-form-label">Details</label>
+                    <div class="col-sm-10">
+                            <textarea rows="5" class="form-control" id="detail" name="detail"
+                                      placeholder="description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group row pb-2">
+                    <label for="where" class="col-sm-2 col-form-label">Where</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="where" name="where" placeholder="location">
+                    </div>
+                </div>
+
+                <div class="form-group row pb-2">
+                    <label for="when" class="col-sm-2 col-form-label">When</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id="when" name="when" min="2020-01-04"
+                               max="2022-12-31">
+                    </div>
+                </div>
+                <div class="form-group row pb-2">
+                    <label for="when" class="col-sm-2 col-form-label">Start</label>
+                    <div class="col-sm-10">
+                        <input type="time" id="start" name="start" min="00:00" max="23:59" value="00:00"
+                               class="form-control" style="width: 125px;" required>
+                    </div>
+                </div>
+                <div class="form-group row pb-2">
+                    <label for="when" class="col-sm-2 col-form-label">End</label>
+                    <div class="col-sm-10">
+                        <input type="time" id="end" name="end" min="00:00" max="23:59" value="23:59"
+                               class="form-control" style="width: 125px;" required>
+                    </div>
+                </div>
+
+
+                <button type="button" class="btn btn-primary-bordered fr" onclick="newConnection()">Create Connection
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<% include ./common/footer.ejs %>
+<script type="text/javascript">
+    // 1.监听submit button的click事件，onClick绑定函数来实现
+    function newConnection() {
+        $('#error').empty();
+        $('#error').hide();
+        //2.获取表单各个字段的值
+        var topic = $("#topic").val();
+        var title = $("#title").val();
+        var details = $("#detail").val();
+        var location = $("#where").val();
+        var date = $("#when").val();
+        var start = $("#start").val();
+        var end = $("#end").val();
+
+        var data = 'topic=' + topic + '&title=' + title + '&details=' + details + '&where=' + location
+            + '&when=' + date + '&start=' + start + '&end=' + end;
+        //3. 发起ajax请求，调用接口/validate, 提交表单数据，调用方式为post
+        $.ajax({
+            url: '/cciconnect/addconnection/new',
+            type: "post",
+            data: data,
+            dataType: 'json',
+            success: function (data) {
+                if (200 == data.status) {
+                    window.location.href = '/cciconnect/savedConnections_1';
+                } else if (4001 == data.status) {
+                    let msg = data.msg;
+                    msg.forEach((item, idx) => {
+                        let error_item = document.createElement("p");
+                        error_item.innerText = item;
+                        $('#error').append(error_item);
+                    })
+
+                    $('#error').show();
+                }
+            }
+        })
+    }
+</script>
+</body>
+
+</html>

@@ -1,0 +1,10 @@
+[type="datetime-local"] {
+    background:#fff  url("../images/calendar-32.png") 100% 90% no-repeat;
+
+}
+[type="datetime-local"]::-webkit-inner-spin-button {
+    display: none;
+}
+[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}

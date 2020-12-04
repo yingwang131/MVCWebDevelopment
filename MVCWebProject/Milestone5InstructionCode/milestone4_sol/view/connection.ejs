@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Connection</title>
+
+</head>
+
+<body>
+    <% include ./common/header.ejs %>
+    <div class="container">
+
+        <!--       content goes here -->
+        <div class="row mt-5">
+            <div class="col-sm-9 my-auto">
+                <h4><%= data.connection._connectionName %></h4>
+                <div class="card mb-3 border-0">
+                    <div class="row no-gutters">
+                        <div class="col-md-4">
+                            <img src="/images/<%= data.connection._image %>" class="card-img" alt="eventImage" />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Hosted by <%= data.connection._host %></h5>
+                                <p class="card-text"> <%= data.connection._date %></p>
+                                <p class="card-text"><%= data.connection._startTime %> - <%= data.connection._endTime %>
+                                </p>
+                                <p class="card-text"><%= data.connection._location %></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 ft">
+                <span>
+                    <p>Are you going? 3 people going</p>
+                    <form method="post">
+                        <input hidden name="connectionId" value="<%= data.connection._connectionId %>">
+                        <button type="submit" formaction="/cciconnect/myconnections/rsvp" class="btn btn-success"
+                            name="rsvp" value="Yes">Yes</button>
+                        <button type="submit" formaction="/cciconnect/myconnections/rsvp" class="btn btn-danger"
+                            name="rsvp" value="No">No</button>
+                        <button type="submit" formaction="/cciconnect/myconnections/rsvp" class="btn btn-blue"
+                            name="rsvp" value="Maybe">Maybe</button>
+                    </form>
+                </span>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-sm-8">
+                <h3>Details</h3>
+                <p class="ml-4"><%= data.connection._detail %></p>
+            </div>
+
+        </div>
+    </div>
+
+
+    </div>
+
+
+    </div>
+
+    </div>
+
+    <% include ./common/footer.ejs %>
+</body>
+
+</html>

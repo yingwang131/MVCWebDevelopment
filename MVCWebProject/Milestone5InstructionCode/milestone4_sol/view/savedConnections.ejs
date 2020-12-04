@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Connections</title>
+</head>
+
+<body>
+    <% include ./common/header.ejs %>
+    <div class="container">
+
+        <!--       content goes here -->
+        <div class="row">
+            <section class="col-12 mt-5">
+                <h3>Norm's Connections</h3>
+                <form method="POST">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Connection</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Going?</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%for(var j=0; j< userConnections.length; j++){ %>
+                            <tr>
+                                <td> <% if(userConnections[j].connection.host.split(" ")[0] == theUser.firstName) { %><img
+                                        src="/images/connect.png" alt="..." class="five-five rounded-circle"> <% } %>
+                                    <%= userConnections[j].connection.connectionName %></td>
+                                <td><%= userConnections[j].connection.connectionTopic %></td>
+                                <td><%= userConnections[j].rsvp %></td>
+                                <td>
+
+
+                                    <input type="hidden" name="viewConnection"
+                                        value="<%= userConnections[j].connection.connectionId %>" />
+
+                                    <button type="submit"
+                                        formaction="/cciconnect/connection/<%= userConnections[j].connection.connectionId%>"
+                                        class="btn btn-primary-bordered btn-sm">Update</button>
+                                    <button type="submit" formaction="/connections/myConnections/delete"
+                                        class="btn btn-primary-bordered btn-sm" name="connectionId"
+                                        value="<%= userConnections[j].connection.connectionId%>">Delete</button>
+
+
+                                </td>
+                            </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </form>
+            </section>
+        </div>
+
+
+    </div>
+
+    <% include ./common/footer.ejs %>
+</body>
+
+</html>

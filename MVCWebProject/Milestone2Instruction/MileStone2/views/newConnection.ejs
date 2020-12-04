@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+<!--    <link rel="stylesheet" type="text/css"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
+    <link rel="stylesheet" type="text/css"  href="stylesheets/MileStone1.css">
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" type="text/css"  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" type="text/css"  href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+</head>
+
+<body style="height:800px;width:100%;">
+
+<%- include ('partials/navigation') %>
+
+<%- include ('partials/header')%>
+
+
+
+<div class="container" style="height: 63%">
+    <div class="row">
+        <div class="col-sm-9">
+            <br>
+            <form action="newEvent" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <label for="topic" class="col-sm-2 control-label">Topic</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id = "topic"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-10">
+                    <input type="text" class="form-control" id = "name"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-9">
+                    <textarea name="description" id="descrip" cols="113" rows="5">description</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="where" class="col-sm-2 control-label">Where</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id = "where"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="when" class="col-sm-2 control-label">When</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control" id = "when"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-push-10">
+                    <input type="submit" class="btn btn-default" value="create event"/>
+                    </div>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ('partials/footer')%>
+</body>
+</html>

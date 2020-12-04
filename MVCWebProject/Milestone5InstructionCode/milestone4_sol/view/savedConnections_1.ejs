@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Connections</title>
+</head>
+
+<body>
+    <% include ./common/header.ejs %>
+    <div class="container">
+
+        <!--       content goes here -->
+        <div class="row">
+            <section class="col-12 mt-5">
+                <h2>Norm's Connections
+                </h2>
+
+                <% 
+                if(userConnections.length == 0){ %>
+               <h4>
+                        You have no connections in your profile. Checkout the available connections or host your own connections.
+
+               </h4>
+               <% } else {%>
+                <form  method="POST">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Connection</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Going?</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           
+                           
+                            <%for(var j=0; j< userConnections.length; j++){ %>
+                            <tr>
+                                <td> <% if(userConnections[j]._connection._host.split(" ")[0] == theUser._firstName) { %><img
+                                        src="/images/connect.png" alt="..." class="five-five rounded-circle"> <% } %>
+                                    <%= userConnections[j]._connection._connectionName %></td>
+                                <td><%= userConnections[j]._connection._connectionTopic %></td>
+                                <td><%= userConnections[j]._rsvp %></td>
+                                <td>
+
+
+                                    <input type="hidden" name="viewConnection"
+                                        value="<%= userConnections[j]._connection._connectionId %>" />
+
+                                    <button type="submit"
+                                        formaction="/cciconnect/connection/<%= userConnections[j]._connection._connectionId%>"
+                                        class="btn btn-primary-bordered btn-sm">Update</button>
+                                    <button type="submit" formaction="/cciconnect/myconnections/delete"
+                                        class="btn btn-primary-bordered btn-sm" name="connectionId"
+                                        value="<%= userConnections[j]._connection._connectionId%>">Delete</button>
+
+
+                                </td>
+                            </tr>
+                            <% }
+                        } %>
+                        </tbody>
+                    </table>
+                </form>
+            </section>
+        </div>
+
+
+    </div>
+
+    <% include ./common/footer.ejs %>
+</body>
+
+</html>

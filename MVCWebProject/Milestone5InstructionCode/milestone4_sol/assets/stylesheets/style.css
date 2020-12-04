@@ -1,0 +1,85 @@
+@import "bootstrap/bootstrap.min.css";
+@import "fa/all.css";
+@import "fa/fontawesome.css";
+@import "fa/solid.css";
+@import "fa/brands.css";
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap');
+
+p{
+  font-size: 14pt;
+}
+.container{
+  height: 75% !important;
+}
+.navbar-row {
+  min-width: 100%;
+  margin: auto;
+}
+.navbar-row:first-child {
+  padding: 1rem;
+  border-bottom: #34941a solid 2px;
+}
+
+footer{
+  color: #ffffff;
+  height: fit-content;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: justify-all;
+}
+footer a{
+  /*min-height: 5rem !important;*/
+  color: #ffffff;
+  padding: 1rem;
+}
+footer a:hover{
+  color: #ffffff;
+
+}
+
+.footer-text{
+  margin: auto;
+  padding-right: 3rem;
+}
+
+.social-links a{
+  display: block;
+  float: left;
+  width: 36px;
+  color: #ffffff;
+  margin-right: 2rem;
+}
+.social-links a i{
+  padding: 12px 11px;
+  font-size: 30px;
+  color: #909090;
+}
+.social-links .fab{
+  color: #ffffff !important;
+}
+.color-secondary{
+  color: #34941a !important;
+}
+.seven-five{
+  max-width: 75px;
+  width: 75px;
+  margin: 5px;
+  padding: 2px;
+}
+.five-five{
+  max-width: 50px;
+  width: 30px;
+  margin: 5px;
+  padding: 2px;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+  max-height: 5rem;
+}
+
+#login td{
+  padding:10px;
+}

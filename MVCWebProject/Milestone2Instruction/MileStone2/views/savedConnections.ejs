@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet"  type="text/css"  href="stylesheets/MileStone1.css">
+
+</head>
+<body style="height:800px;width:100%;">
+
+<%- include ('partials/navigation') %>
+
+<%- include ('partials/header')%>
+
+
+<div style="height: 50%">
+    <main>
+
+        <table style="width: 90%" class="connection-table">
+            <caption class="con-head">Norm's events</caption>
+            <tr>
+                <th>Connection</th>
+                <th>Category</th>
+                <th>Going</th>
+                <th colspan="2"></th>
+
+            </tr>
+            <tr>
+                <th>Chopin Piano Concerto</th>
+                <th>Concert</th>
+                <th>Yes</th>
+                <th>
+                    <button> Update</button>
+
+                </th>
+                <th>
+                    <button> Delete</button>
+                </th>
+            </tr>
+            <tr>
+                <th>Hornets vs Trail Blazers</th>
+                <th>BasketBall</th>
+                <th>Yes</th>
+                <th>
+                    <button> Update</button>
+
+                </th>
+                <th>
+                    <button> Delete</button>
+                </th>
+            </tr>
+        </table>
+    </main>
+</div>
+
+<%- include ('partials/footer')%>
+
+</body>
+</html>
