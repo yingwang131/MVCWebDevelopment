@@ -33,7 +33,7 @@
 ![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/FinalProjectApplication/DemoPic/connections.png)
 ## Create new Connection
 ![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/FinalProjectApplication/DemoPic/creatNewConnection.png)
-## add
+## Add the specific Connection to your account
 ![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/FinalProjectApplication/DemoPic/connection.png)
 ## The specific user's Connection, the user can add|delete|update the connection
 ![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/FinalProjectApplication/DemoPic/theUserConnections.png)
