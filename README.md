@@ -9,11 +9,15 @@
 
 ## Logic Layer
 ![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/FinalProjectApplication/DemoPic/logic.png)
-## MVC
-![image](https://github.com/yingwang131/Event-Recommendation/blob/master/DemoPic/rpc.png)
+## MVC Framework
+![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/FinalProjectApplication/DemoPic/MVC.png)
 ## Database
-### the schema for MySQL database of this project.
-![image](https://github.com/yingwang131/Event-Recommendation/blob/master/DemoPic/db.png)
+### the screenshot of ConnectionDB database of this project.
+![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/Milestone4InsructionCode/Milestone4PicDoc/DataBaseCollectionContent/1ConnectionDB.png)
+### the screenshot of UserData database of this project.
+![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/Milestone4InsructionCode/Milestone4PicDoc/DataBaseCollectionContent/2UserDB.png)
+### the screenshot of UserProfile database of this project.
+![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/Milestone4InsructionCode/Milestone4PicDoc/DataBaseCollectionContent/3UserProfileDB.png)
 ## Recommendation Algorithm(content-based)
 ### I recommend events based on categories that the user has favorited. By knowing the category of the item the user favorited, I recommend some events belong to this category nearby this user.
 * Fetch all ids of these events this user has visited.
