@@ -23,7 +23,8 @@
 * Milestone2: MVC Application with Routes and Views
 * Milestone3: Middleware, session tracking
 * Milestone4: Database Integration with MongonDB
-* Milestone5: Put together of M1, M2, M3, M4 and data validation of the project
+* Milestone5: Data validation of the project
+* Milestone6: Put together of M1, M2, M3, M4
 
 ## Login
 ![image](https://github.com/yingwang131/MVCWebDevelopment/blob/master/MVCWebProject/FinalProjectApplication/DemoPic/logIn.png)
