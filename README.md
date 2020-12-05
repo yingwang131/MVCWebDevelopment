@@ -1,8 +1,8 @@
 # MVC Web Development
 #### An interactive web application full stack project for users to search events, create new event, add|delete|update current event to the users account.
 ## Tech Stack
-* Front end: HTML5/CSS/JavaScript
-* Back end: Nodejs
+* Front end: HTML5/CSS/JavaScript/AJAX
+* Back end: Nodejs/JavaScript
 * Database: MongoDB and Mongoose
 * Frameworks: MVC 
 
